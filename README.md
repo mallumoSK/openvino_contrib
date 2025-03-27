@@ -58,11 +58,13 @@ git clone --recurse-submodules -j8 -b jvm/2025/0  https://github.com/mallumoSK/o
 cd "$ROOT/openvino_contrib/modules/java_api"
 mkdir -p cm_build && cd cm_build
 cmake .. && cmake --build . -j8
-mkdir -p ../src/main/native
-cp libinference_engine_java_api.so ../src/main/native/libinference_engine_java_api.so
+sudo cp libinference_engine_java_api.so /usr/java/packages/lib/libinference_engine_java_api.so
 
-cd "$ROOT/openvino_contrib/modules/java_api"
+cd ../
 ./gradlew build
 echo "target-jar:"
 echo "${PWD}/build/libs/openvino-2025.0-linux-x86_64.jar"
+echo "target-so:"
+echo "${PWD}/cm_build/libinference_engine_java_api.so"
+echo "/usr/java/packages/lib/libinference_engine_java_api.so"
 ```
