@@ -1,5 +1,5 @@
 # Copyright (C) 2020-2023 Intel Corporation
-
+cmake_minimum_required(VERSION 3.28)
 project(inference_engine_java_api)
 
 if (NOT CMAKE_CROSSCOMPILING)

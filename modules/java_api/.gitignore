@@ -1,2 +1,4 @@
 .gradle
 **/build/
+/cm_build/
+/src/main/native

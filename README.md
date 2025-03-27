@@ -48,3 +48,21 @@ In order to keep a clean overview containing all contributed modules, the follow
 
 We welcome community contributions to the `openvino_contrib` repository. If you have an idea how to improve the modules, please share it with us.
 All guidelines for contributing to the repository can be found [here](CONTRIBUTING.md).
+
+## build java_api
+```shell
+ROOT="~/dev"
+mkdir -p "$ROOT" && cd "$ROOT"
+git clone --recurse-submodules -j8 -b jvm/2025/0  https://github.com/mallumoSK/openvino_contrib.git
+
+cd "$ROOT/openvino_contrib/modules/java_api"
+mkdir -p cm_build && cd cm_build
+cmake .. && cmake --build . -j8
+mkdir -p ../src/main/native
+cp libinference_engine_java_api.so ../src/main/native/libinference_engine_java_api.so
+
+cd "$ROOT/openvino_contrib/modules/java_api"
+./gradlew build
+echo "target-jar:"
+echo "${PWD}/build/libs/openvino-2025.0-linux-x86_64.jar"
+```
